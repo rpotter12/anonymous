@@ -5,7 +5,7 @@ as boot.s -o boot.o
 gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra  
   
 #linking the kernel with kernel.o and boot.o files  
-gcc -T linker.ld -o MyOS.bin -ffreestanding -O2 -nostdlib kernel.o boot.o -lgcc  
+gcc -T linker.ld -o MyOS.bin -ffreestanding -O2 -nostdlib kernel.o boot.o -lgcc -no-pie
   
 #check MyOS.bin file is x86 multiboot file or not  
 grub-file --is-x86-multiboot MyOS.bin  
@@ -18,4 +18,3 @@ grub-mkrescue -o MyOS.iso isodir
   
 #run it in qemu  
 qemu-system-x86_64 -cdrom MyOS.iso  
-
