@@ -1,0 +1,29 @@
+language: generic
+
+include:
+  - os: linux
+    addons:
+      apt:
+        update: true
+        sources:
+          - ubuntu-toolchain-r-test
+        packages:
+          - xorriso
+          - grub-mkrescue
+
+sudo: required
+dist: xenial
+git:
+  depth: 22
+
+script:
+  - sh run.sh
+
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    api_key:
+      secure: "y442uNPo3yFnq7yM0oMTNYZorE2uMjJhRzzjbaSaFM6loqyTJ8bToV2Reot+9HG3Aywnp+nDXpfhSnXovb07zKtL+3k/LxwJcTNQOlfl/l7jZlkvgCZuAkTNLiJ8KT5BnXmxWiOdgFffnTV9BLYoLCxnzGA1bkod7XKX0TDuSJM05V2atJBIfMEHp6QrmXA3LvlTpDROTBIQlFMm1qbPYmXX6yjaaUGs3XYEjuXGp3NoDNHQZhOGc5SCdh8dXJT+j9oZp8a/0wb6FsF6dGZw7kTub5UVR1g97V6rbUG2I65SQJbGnCVLoUeOtpUmwgwI3wX3SibuGHW4z0S7CT1HGn19DmWMBuXhfQ9e0s1Y+eUdbtf2TEJ8w9mSHf+djrsVKQhjF7F5lfFIiZZSEDsX3SlQWc3m9/giigsjataNgifbrFwQ6iLFWcldusKNf8/HtIYAmnRs8xm6YwdsoKs+dny0SwBoyEPvVpbOM76UHZexwiHLlkvifjQzdH01oWMvQj3goDK95PyAxZic8JWa1WlsCJBP4nwJC4ha24k9/uc9yZJFZocLlrxLyo9QM4RkLIA8+kSpJnRnGhqUX65a4svSK5XYz5RShSiCizxQCjJk01vtwQPkqTdNjZjIJsQ/NKPwLPBrV/ZuIBtZjRS4phRp2JNUyiu6J7k0l74e6tU="
+    file_glob: true # http://stackoverflow.com/a/28579635/1320237
+    on:
+      all_branches: true

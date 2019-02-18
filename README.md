@@ -2,7 +2,7 @@
 os
 
 ## Requirements
-- GNU/Linux - I am using GNU/Kali Linux 2017 i386 distribution .
+- GNU/Linux
 - Assembler - I am using GNU Assembler(gas) to instruct the bootloader for loading the starting point of our kernel.
 - GCC - GNU Compiler Collection a cross compiler. A newer version of GCC. I am using 7.2.0 version of GCC. The most important thing.
 If you use old version you may face multiboot header not found error.
